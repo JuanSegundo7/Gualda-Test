@@ -1,4 +1,8 @@
 
+:root{
+    --yellow: #FFE81F
+}
+
 * {
     box-sizing: border-box;
 }
