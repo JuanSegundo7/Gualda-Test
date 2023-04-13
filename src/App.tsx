@@ -1,15 +1,22 @@
 import React from "react";
-import Switch from "./components/switch/switchComponent";
+
+import store from "./redux/store";
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+
+import Switch from "./components/switch/switchComponent";
+
 import styles from "./App.module.css";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <main className={styles.main}>
-        <Switch />
-      </main>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <main className={styles.main}>
+          <Switch />
+        </main>
+      </BrowserRouter>
+    </Provider>
   );
 };
 
