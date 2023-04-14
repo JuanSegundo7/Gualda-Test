@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Films, Characters } from "../models/types";
 
 export const GET_PLANETS = "GET_PLANETS";
 
@@ -8,9 +9,25 @@ export const getFilms = () => async (dispatch: Function) => {
 
     const { results } = data;
 
-    console.log(results);
+    const updatedResults = await Promise.all(
+      results.map(async (film: Films) => {
+        const charactersArray: Characters[] = [];
 
-    dispatch({ type: GET_PLANETS, payload: results });
+        await Promise.all(
+          film.characters.map(async (characterString: any) => {
+            const { data } = await axios.get(characterString);
+            charactersArray.push(data);
+          })
+        );
+
+        return {
+          ...film,
+          characters: charactersArray,
+        };
+      })
+    );
+
+    dispatch({ type: GET_PLANETS, payload: updatedResults });
   } catch (e) {
     console.log(e);
   }

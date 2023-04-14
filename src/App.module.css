@@ -22,3 +22,26 @@ main {
     min-height: 100vh;
     text-align: center;
 }
+
+.PageStyle {
+    background-image: url('https://cdn.wallpapersafari.com/96/60/ZBf0Im.jpg');
+    width: 100%;
+    min-height: 100vh;
+}
+
+.PageContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3em;
+}
+
+#loader{
+    height: 100vh;
+}
+
+#loader h1{
+    color: var(--yellow)
+}
