@@ -23,6 +23,8 @@ main {
     text-align: center;
 }
 
+p{margin: 0;}
+
 .PageStyle {
     background-image: url('https://cdn.wallpapersafari.com/96/60/ZBf0Im.jpg');
     width: 100%;
@@ -36,6 +38,10 @@ main {
     align-items: center;
     justify-content: center;
     padding: 0 3em;
+}
+
+#Error {
+    color: var(--yellow);
 }
 
 #loader{

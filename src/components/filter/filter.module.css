@@ -1,0 +1,16 @@
+#Filter{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Star Jedi', sans-serif;
+    color: var(--yellow);
+    margin: 1em 0;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#Filter p{
+    letter-spacing: 5px;
+    width: 180px;
+    cursor: pointer;
+}

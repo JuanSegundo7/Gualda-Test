@@ -3,9 +3,18 @@ import { Films, States } from "../../models/types";
 import styles from "../../App.module.css";
 import FilmCard from "../../components/films";
 import Spinner from "../../components/spinner";
+import { useEffect } from "react";
+import { getFilms } from "../../redux/actions";
+import { useAppDispatch } from "../../redux/hook";
 
 const Home = () => {
   window.scrollTo(0, 0);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getFilms());
+  }, [dispatch]);
 
   const films = useSelector(({ Films }: States) => Films);
 

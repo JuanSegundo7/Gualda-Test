@@ -7,3 +7,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dropdownContent::-webkit-scrollbar, body::-webkit-scrollbar{
+  width: 2px;
+}
+
+.dropdownContent::-webkit-scrollbar, body::-webkit-scrollbar-thumb{
+  background: var(--yellow);
+  border-radius: 20px;
+  overflow: hidden;
+}
