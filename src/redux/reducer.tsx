@@ -61,11 +61,10 @@ const reducer = (state = initialState, action: any) => {
             CharactersCopy: filteredArray,
           };
         }
-
-        filteredArray = state.Characters.filter((character: Characters) =>
-          character.eye_color.includes(value.toLowerCase())
-        );
       }
+      filteredArray = state.Characters.filter((character: Characters) =>
+        character.eye_color.includes(value.toLowerCase())
+      );
 
       filteredArray = state.Characters.filter((character: Characters) =>
         character.gender.includes(value.toLowerCase())
