@@ -1,15 +1,14 @@
 import { useSelector } from "react-redux";
 import { Films, States } from "../../models/types";
-import styles from "../../App.module.css";
+import appStyles from "../../App.module.css";
 import FilmCard from "../../components/films";
 import Spinner from "../../components/spinner";
 import { useEffect } from "react";
 import { getFilms } from "../../redux/actions";
+import styles from "./home.module.css";
 import { useAppDispatch } from "../../redux/hook";
 
 const Home = () => {
-  window.scrollTo(0, 0);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -19,8 +18,9 @@ const Home = () => {
   const films = useSelector(({ Films }: States) => Films);
 
   return (
-    <section className={styles.PageStyle}>
-      <div className={styles.PageContainer}>
+    <section className={appStyles.PageStyle}>
+      <h1 id={styles.title}>STAR WARS </h1>
+      <div className={appStyles.PageContainer}>
         {!films.length ? (
           <Spinner />
         ) : (

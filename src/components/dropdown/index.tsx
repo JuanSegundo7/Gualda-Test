@@ -23,7 +23,7 @@ export default function Dropdown({ name, array }: DropdownInfo) {
                 data-value={array}
                 onClick={(e) => handleClick(e as AnchorClickEvent)}
               >
-                {array}
+                {array.toLowerCase()}
               </a>
             );
           })}

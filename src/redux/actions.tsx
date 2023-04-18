@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Films, Characters } from "../models/types";
+import { Characters } from "../models/types";
 
 export const GET_PLANETS = "GET_PLANETS";
 export const LOAD_CHARACTERS = "LOAD_CHARACTERS";
@@ -45,7 +45,8 @@ export const cleanCharacters =
 
 export const filter = (obj: Object) => async (dispatch: Function) => {
   try {
-    console.log(obj, "llegue");
     dispatch({ type: FILTER, payload: obj });
-  } catch (e) {}
+  } catch (e) {
+    console.log(e);
+  }
 };

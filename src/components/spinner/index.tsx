@@ -1,8 +1,12 @@
 import styles from "./spinner.module.css";
 
 const Spinner = () => {
+  const currentUrl = window.location.href;
   return (
-    <section id={styles.container}>
+    <section
+      id={currentUrl.includes("film") ? styles.containerFilm : styles.container}
+    >
+      <p id={styles.loading}>Loading</p>
       <div className={styles.waveform}>
         <div className={styles.waveform__bar}></div>
         <div className={styles.waveform__bar}></div>

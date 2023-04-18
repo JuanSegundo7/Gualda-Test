@@ -1,0 +1,14 @@
+#title{
+    color: var(--yellow);
+    font-size: 50px;
+    font-family: 'Star Jedi', sans-serif;
+    margin: 0.5em 1em;
+    letter-spacing: 10px;
+}
+
+
+@media (min-width: 768px) {
+    #title{
+        font-size: 70px;
+    }
+}

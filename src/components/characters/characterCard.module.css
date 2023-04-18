@@ -2,7 +2,7 @@
 #CharacterCard{
     color: var(--yellow);
     border: 2px solid var(--yellow);
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Star Jedi', sans-serif;
     margin: 1em;
     height: 250px;
     width: 100%;
@@ -21,11 +21,12 @@
     transition: 0.5s;
 }
 
-#CharacterCard h1{
+#CharacterCard h2{
     letter-spacing: 2px;
-    background-color: black;
+    background-color: #000;
 }
 
 #CharacterCard h1, #CharacterCard p{
     margin: 0.5em 0;
+    background-color: #000
 }

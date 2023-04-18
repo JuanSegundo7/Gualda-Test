@@ -31,7 +31,7 @@ const reducer = (state = initialState, action: any) => {
     }
 
     case CLEAN_CHARACTERS: {
-      if (action.payload == true) {
+      if (action.payload) {
         return {
           ...state,
           CharactersError: "",
@@ -48,47 +48,47 @@ const reducer = (state = initialState, action: any) => {
 
     case FILTER: {
       const { value, name } = action.payload;
+      let filteredArray;
 
-      if (state.CharactersCopy.length > 0) {
-        let update = state.CharactersCopy.filter((character: Characters) =>
-          name == "Eye Color"
-            ? character.eye_color.includes(value.toLowerCase())
-            : character.gender.includes(value.toLowerCase())
-        );
+      if (name === "Eye Color") {
+        if (state.CharactersCopy.length > 0) {
+          filteredArray = state.CharactersCopy.filter((character: Characters) =>
+            character.eye_color.includes(value.toLowerCase())
+          );
 
-        if (!update.length) {
           return {
             ...state,
-            CharacterCopy: [],
-            CharactersError:
-              "There are not characters available with these characteristics",
+            CharactersCopy: filteredArray,
           };
         }
 
-        return {
-          ...state,
-          CharactersCopy: update,
-        };
+        filteredArray = state.Characters.filter((character: Characters) =>
+          character.eye_color.includes(value.toLowerCase())
+        );
       }
 
-      const newArray = state.Characters.filter((character: Characters) =>
-        name == "Eye Color"
-          ? character.eye_color.includes(value.toLowerCase())
-          : character.gender.includes(value.toLowerCase())
+      filteredArray = state.Characters.filter((character: Characters) =>
+        character.gender.includes(value.toLowerCase())
       );
 
-      if (!newArray.length) {
+      if (!filteredArray.length) {
         return {
           ...state,
-          CharacterCopy: [],
+          CharactersCopy: [],
           CharactersError:
             "There are not characters available with these characteristics",
         };
       }
 
+      if (
+        JSON.stringify(filteredArray) === JSON.stringify(state.CharactersCopy)
+      ) {
+        return state;
+      }
+
       return {
         ...state,
-        CharactersCopy: newArray,
+        CharactersCopy: filteredArray,
       };
     }
 

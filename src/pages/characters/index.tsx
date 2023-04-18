@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hook";
 import { useSelector } from "react-redux";
@@ -8,15 +8,16 @@ import styles from "../../App.module.css";
 import Spinner from "../../components/spinner";
 import { cleanCharacters, getFilms, loadCharacters } from "../../redux/actions";
 import Filter from "../../components/filter";
+import Back from "../../components/back";
 
 const CharactersPage = () => {
-  const [loaded, setLoaded] = useState(false);
+  const [load, setLoading] = useState(false);
+  window.scrollTo(0, 0);
 
   window.onload = () => {
-    setLoaded(true);
+    dispatch(getFilms());
+    setLoading(true);
   };
-
-  window.scrollTo(0, 0);
 
   const characters = useSelector(({ Characters }: States) => Characters);
   const charactersError = useSelector(
@@ -29,22 +30,20 @@ const CharactersPage = () => {
   const { id } = useParams();
   const films = useSelector(({ Films }: States) => Films);
 
+  console.log(charactersCopy);
+
   const charactersUrl =
     films.find((film: Films) => (id ? film.episode_id === parseInt(id) : false))
       ?.characters ?? [];
 
   useEffect(() => {
-    if (charactersUrl.length > 0) dispatch(loadCharacters(charactersUrl));
-
-    if (loaded) {
-      dispatch(getFilms());
+    if (charactersUrl.length > 0 || films.length > 0)
       dispatch(loadCharacters(charactersUrl));
-    }
 
     return () => {
       dispatch(cleanCharacters());
     };
-  }, [dispatch, loaded]);
+  }, [dispatch, load, films]);
 
   const currentCharacters =
     charactersCopy.length > 0 ? charactersCopy : characters;
@@ -68,6 +67,7 @@ const CharactersPage = () => {
           ))
         )}
       </div>
+      {characters.length ? <Back /> : null}
     </section>
   );
 };
