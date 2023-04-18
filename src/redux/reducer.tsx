@@ -48,26 +48,41 @@ const reducer = (state = initialState, action: any) => {
 
     case FILTER: {
       const { value, name } = action.payload;
+
       let filteredArray;
 
-      if (name === "Eye Color") {
-        if (state.CharactersCopy.length > 0) {
-          filteredArray = state.CharactersCopy.filter((character: Characters) =>
-            character.eye_color.includes(value.toLowerCase())
-          );
+      if (state.CharactersCopy.length > 0) {
+        filteredArray = state.CharactersCopy.filter((character: Characters) =>
+          name === "Eye Color"
+            ? character.eye_color.includes(value.toLowerCase())
+            : value.toLowerCase() === "male"
+            ? character.gender === "male"
+            : character.gender.includes(value.toLowerCase())
+        );
 
+        if (!filteredArray.length) {
           return {
             ...state,
-            CharactersCopy: filteredArray,
+            CharactersCopy: [],
+            CharactersError:
+              "There are not characters available with these characteristics",
           };
         }
+
+        return {
+          ...state,
+          CharactersCopy: filteredArray,
+        };
       }
-      filteredArray = state.Characters.filter((character: Characters) =>
-        character.eye_color.includes(value.toLowerCase())
-      );
+
+      console.log(value);
 
       filteredArray = state.Characters.filter((character: Characters) =>
-        character.gender.includes(value.toLowerCase())
+        name === "Eye Color"
+          ? character.eye_color.includes(value.toLowerCase())
+          : value.toLowerCase() === "male"
+          ? character.gender === "male"
+          : character.gender.includes(value.toLowerCase())
       );
 
       if (!filteredArray.length) {
@@ -77,12 +92,6 @@ const reducer = (state = initialState, action: any) => {
           CharactersError:
             "There are not characters available with these characteristics",
         };
-      }
-
-      if (
-        JSON.stringify(filteredArray) === JSON.stringify(state.CharactersCopy)
-      ) {
-        return state;
       }
 
       return {

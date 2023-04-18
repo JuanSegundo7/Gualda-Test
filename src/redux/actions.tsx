@@ -19,7 +19,7 @@ export const getFilms = () => async (dispatch: Function) => {
 };
 
 export const loadCharacters =
-  (characters: any) => async (dispatch: Function) => {
+  (characters: string[]) => async (dispatch: Function) => {
     try {
       const dataArray = [] as Characters[];
 

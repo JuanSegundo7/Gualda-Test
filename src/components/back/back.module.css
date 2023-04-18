@@ -2,10 +2,10 @@
     position: fixed;
     z-index: 99;
     background-color: var(--yellow);
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     right: 2vw;
-    top: 85vh;
+    top: 89vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +17,7 @@
 #Back{
     fill: #000;
     left: 10em;
-    width: 1.5em;
+    width: 1em;
 }
 
 
@@ -32,4 +32,17 @@
     fill: var(--yellow);
     transform: scale(1.2);
     transition: all 0.4s;
+}
+
+@media (min-width: 768px) {
+    #Container{
+        width: 4em;
+        height: 4em;
+        right: 2vw;
+        top: 85vh;
+    }
+
+    #Back{
+        width: 1.5em;
+    }
 }

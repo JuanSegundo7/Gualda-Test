@@ -18,6 +18,7 @@ function Filter() {
     array: [
       "Brown",
       "Yellow",
+      "Green",
       "Red",
       "Orange",
       "Blue-gray",

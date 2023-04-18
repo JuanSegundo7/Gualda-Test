@@ -12,6 +12,7 @@ import Back from "../../components/back";
 
 const CharactersPage = () => {
   const [load, setLoading] = useState(false);
+
   window.scrollTo(0, 0);
 
   window.onload = () => {
@@ -30,15 +31,13 @@ const CharactersPage = () => {
   const { id } = useParams();
   const films = useSelector(({ Films }: States) => Films);
 
-  console.log(charactersCopy);
-
   const charactersUrl =
     films.find((film: Films) => (id ? film.episode_id === parseInt(id) : false))
       ?.characters ?? [];
 
   useEffect(() => {
     if (charactersUrl.length > 0 || films.length > 0)
-      dispatch(loadCharacters(charactersUrl));
+      dispatch(loadCharacters(charactersUrl as unknown as string[]));
 
     return () => {
       dispatch(cleanCharacters());
