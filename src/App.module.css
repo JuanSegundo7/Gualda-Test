@@ -43,6 +43,7 @@ p{margin: 0;}
 #Error {
     color: var(--yellow);
     font-family: 'Star Jedi', sans-serif;
+    background-color: #000;
     margin: 2em 0;
 }
 
