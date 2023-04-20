@@ -8,7 +8,8 @@ export const FILTER = "FILTER";
 
 export const getFilms = () => async (dispatch: Function) => {
   try {
-    const { data } = await axios.get(`https://swapi.dev/api/films`);
+    const apiUrl = process.env.REACT_APP_API || ``;
+    const { data } = await axios.get(`${apiUrl}`);
 
     const { results } = data;
 
