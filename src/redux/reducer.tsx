@@ -54,7 +54,9 @@ const reducer = (state = initialState, action: any) => {
       if (state.CharactersCopy.length > 0) {
         filteredArray = state.CharactersCopy.filter((character: Characters) =>
           name === "Eye Color"
-            ? character.eye_color.includes(value.toLowerCase())
+            ? value.toLowerCase() === "blue"
+              ? character.eye_color === "blue"
+              : character.eye_color.includes(value.toLowerCase())
             : value.toLowerCase() === "male"
             ? character.gender === "male"
             : character.gender.includes(value.toLowerCase())
@@ -79,7 +81,9 @@ const reducer = (state = initialState, action: any) => {
 
       filteredArray = state.Characters.filter((character: Characters) =>
         name === "Eye Color"
-          ? character.eye_color.includes(value.toLowerCase())
+          ? value.toLowerCase() === "blue"
+            ? character.eye_color === "blue"
+            : character.eye_color.includes(value.toLowerCase())
           : value.toLowerCase() === "male"
           ? character.gender === "male"
           : character.gender.includes(value.toLowerCase())
